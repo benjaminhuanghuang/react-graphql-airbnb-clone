@@ -1,7 +1,7 @@
 import React from "react";
 //
+import { RegisterView } from "./ui/RegisterView";
+//
 export const RegisterConnector = () => {
-  return(
-    <div>"Register"</div>
-  )
+  return <RegisterView>></RegisterView>;
 };

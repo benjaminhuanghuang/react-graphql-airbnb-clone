@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import { ApolloProvider } from "@apollo/react-hooks";
 //
+import "./index.css"
+//
 import {client} from "./apollo"
 import { Routes } from "./routes";
 
