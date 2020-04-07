@@ -17,9 +17,9 @@ interface Props {
 export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   render() {
     const { values, handleChange, handleBlur, touched, errors } = this.props; // from FormikProps
-    
+
     const onFinish = (values: any) => {
-      console.log('Received values of form: ', values);
+      console.log("Received values of form: ", values);
     };
 
     return (
@@ -29,7 +29,11 @@ export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             <Input onChange={handleChange} value={values.email} onBlur={handleBlur} />
           </AntForm.Item>
 
-          <AntForm.Item label="Password" name="password" help={touched.password && errors.password ? errors.password : ""}>
+          <AntForm.Item
+            label="Password"
+            name="password"
+            help={touched.password && errors.password ? errors.password : ""}
+          >
             <Input.Password onChange={handleChange} value={values.password} onBlur={handleBlur} />
           </AntForm.Item>
 
@@ -55,16 +59,9 @@ const invalidEmail = "email must be a valid email";
 
 export const registerPasswordValidation = yup.string().min(3, passwordNotLongEnough).max(255).required();
 
-export const validUserSchema = yup.object().shape({
+export const loginSchema = yup.object().shape({
   email: yup.string().min(3, emailNotLongEnough).max(255).email(invalidEmail).required(),
   password: registerPasswordValidation,
-});
-
-const invalidLogin = "invalid login";
-
-export const loginSchema = yup.object().shape({
-  email: yup.string().min(3, invalidLogin).max(255, invalidLogin).email(invalidLogin).required(),
-  password: yup.string().min(3, invalidLogin).max(255, invalidLogin).required(),
 });
 
 export const RegisterView = withFormik<Props, FormValues>({
