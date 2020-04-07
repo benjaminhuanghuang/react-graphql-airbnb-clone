@@ -12,7 +12,7 @@ export class RegisterConnector extends React.PureComponent<RouteComponentProps<{
   render() {
     return (
       <RegisterController>
-        {({ submit}:any) => <RegisterView submit={submit} />}
+        {({ submit }:{ submit: any }) => <RegisterView submit={submit} />}
       </RegisterController>
     );
   }
