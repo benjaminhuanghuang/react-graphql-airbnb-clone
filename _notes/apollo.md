@@ -6,3 +6,10 @@
 ```
 yarn add apollo-boost @apollo/react-hooks graphql
 ```
+
+
+
+## Generate code
+```
+   apollo-codegen 
+```

@@ -28,3 +28,10 @@ Postgres + Redis + GraphQL + TypeScript + React + React Native
 
 ### Controller
   Code used in app and web. Does not conaian any platform specific code like <div>
+
+
+
+
+
+## Logs
+Blocked at Part 9
