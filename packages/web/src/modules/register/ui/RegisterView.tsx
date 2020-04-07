@@ -25,7 +25,12 @@ export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
         <AntForm style={{ width: 400 }} onFinish={onFinish}>
-          <AntForm.Item label="Email" name="email" help={touched.email && errors.email ? errors.email : ""}>
+          <AntForm.Item
+            label="Email"
+            name="email"
+            help={touched.email && errors.email ? errors.email : ""}
+            validateStatus={touched.email && errors.email ? "error" : undefined}
+          >
             <Input onChange={handleChange} value={values.email} onBlur={handleBlur} />
           </AntForm.Item>
 
@@ -33,6 +38,7 @@ export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             label="Password"
             name="password"
             help={touched.password && errors.password ? errors.password : ""}
+            validateStatus={touched.password && errors.password ? "error" : undefined}
           >
             <Input.Password onChange={handleChange} value={values.password} onBlur={handleBlur} />
           </AntForm.Item>
@@ -57,11 +63,9 @@ const emailNotLongEnough = "email must be at least 3 characters";
 const passwordNotLongEnough = "password must be at least 3 characters";
 const invalidEmail = "email must be a valid email";
 
-export const registerPasswordValidation = yup.string().min(3, passwordNotLongEnough).max(255).required();
-
 export const loginSchema = yup.object().shape({
   email: yup.string().min(3, emailNotLongEnough).max(255).email(invalidEmail).required(),
-  password: registerPasswordValidation,
+  password: yup.string().min(3, passwordNotLongEnough).max(255).required(),
 });
 
 export const RegisterView = withFormik<Props, FormValues>({
