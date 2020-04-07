@@ -1,10 +1,9 @@
 import React from "react";
 import { withFormik, FormikProps, FormikErrors, Field, Form } from "formik";
 //
-import { Form as AntForm, Input, Button, Checkbox } from "antd";
-import * as yup from "yup";
-import {validUserSchema} from "@airbnb-clone/common"
-
+import { Form as AntForm, Button, Checkbox } from "antd";
+import { validUserSchema } from "@airbnb-clone/common";
+import { InputField } from "../../shared/InputField";
 
 interface FormValues {
   email: string;
@@ -13,38 +12,16 @@ interface FormValues {
 
 interface Props {
   // onFinish: () => void;
-  submit: (values: FormValues) => Promise<FormikErrors<FormValues>>;
+  submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
 }
 
 export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   render() {
-    const { values, handleChange, handleBlur, touched, errors } = this.props; // from FormikProps
-
-    const onFinish = (values: any) => {
-      console.log("Received values of form: ", values);
-    };
-
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <AntForm style={{ width: 400 }} onFinish={onFinish}>
-          <AntForm.Item
-            label="Email"
-            name="email"
-            help={touched.email && errors.email ? errors.email : ""}
-            validateStatus={touched.email && errors.email ? "error" : undefined}
-          >
-            <Input onChange={handleChange} value={values.email} onBlur={handleBlur} />
-          </AntForm.Item>
-
-          <AntForm.Item
-            label="Password"
-            name="password"
-            help={touched.password && errors.password ? errors.password : ""}
-            validateStatus={touched.password && errors.password ? "error" : undefined}
-          >
-            <Input.Password onChange={handleChange} value={values.password} onBlur={handleBlur} />
-          </AntForm.Item>
-
+        <Form style={{ width: 400 }}>
+          <Field name="email" placeholder="Email" component={InputField} />
+          <Field name="password" type="password" placeholder="Password" component={InputField} />
           <AntForm.Item name="remember" valuePropName="checked">
             <Checkbox>Remember me</Checkbox>
           </AntForm.Item>
@@ -55,7 +32,7 @@ export class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             </Button>
             or <a href="">Login now!</a>
           </AntForm.Item>
-        </AntForm>
+        </Form>
       </div>
     );
   }
