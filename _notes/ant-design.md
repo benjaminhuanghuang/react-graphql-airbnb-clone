@@ -1,5 +1,6 @@
 ## Install
 ```
-  yarn add antd
+  yarn add antd    # with ts type
   yarn add @ant-design/icons
+  
 ```
