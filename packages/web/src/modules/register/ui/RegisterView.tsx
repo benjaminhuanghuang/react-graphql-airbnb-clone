@@ -1,46 +1,40 @@
-import React from 'react'
+import React from "react";
 //
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from "antd";
 
 export class RegisterView extends React.PureComponent {
-  render (){
+  render() {
+    // const { getFieldDecorator } = this.props.form;
+
     return (
-      <Form style={{ display: "flex" }}>
-      <div style={{ width: 400, margin: "auto" }}>
-        <Field
-          name="email"
-          prefix={
-            <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-          }
-          placeholder="Email"
-          component={InputField}
-        />
-        <Field
+      <Form>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
           name="password"
-          type="password"
-          prefix={
-            <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-          }
-          placeholder="Password"
-          component={InputField}
-        />
-        <FormItem>
-          <Link to="/forgot-password">Forgot password</Link>
-        </FormItem>
-        <FormItem>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item name="remember" valuePropName="checked">
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
             Register
           </Button>
-        </FormItem>
-        <FormItem>
-          Or <Link to="/login">login now!</Link>
-        </FormItem>
-      </div>
-    </Form>
-    )
+          or <a href="">Login now!</a>
+        </Form.Item>
+      </Form>
+    );
   }
 }
