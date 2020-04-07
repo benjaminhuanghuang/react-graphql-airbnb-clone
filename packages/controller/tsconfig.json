@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "es2017",
+      "es6",
+      "esnext"
+    ],
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "outDir": "./dist"
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}

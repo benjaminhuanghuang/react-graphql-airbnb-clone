@@ -11,7 +11,7 @@ interface InputFieldProps {
 }
 
 export const InputField: React.FC<FieldProps<any> & InputFieldProps> = ({
-  field,
+  field, //{name, value, onChange, onBlur}
   form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   label,
   useNumberComponent = false,
