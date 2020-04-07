@@ -7,9 +7,10 @@ import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLin
 import { User } from "../../../entity/User";
 import { userNotFoundError, expiredKeyError } from "./errorMessages";
 import { forgotPasswordPrefix } from "../../../constants";
-import { registerPasswordValidation } from "../../../yupSchemas";
-import { formatYupError } from "../../../utils/formatYupError";
 
+import { formatYupError } from "../../../utils/formatYupError";
+//
+import { registerPasswordValidation } from "@airbnb-clone/common";
 // 20 minutes
 // lock account
 
